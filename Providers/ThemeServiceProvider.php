@@ -43,7 +43,12 @@ class ThemeServiceProvider extends ServiceProvider
     private function inAdministration()
     {
         $segment = config('laravellocalization.hideDefaultLocaleInURL', false) ? 1 : 2;
-
+        if (config('laravellocalization.hideDefaultLocaleInURL', false) &&
+            LaravelLocalization::getCurrentLocale() == LaravelLocalization::getDefaultLocale()){
+            $segment = 1;
+        }else{
+            $segment = 2;
+        }
         return $this->app['request']->segment($segment) === $this->app['config']->get('asgard.core.core.admin-prefix');
     }
 
