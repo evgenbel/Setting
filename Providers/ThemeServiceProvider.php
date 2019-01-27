@@ -3,6 +3,7 @@
 namespace Modules\Setting\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class ThemeServiceProvider extends ServiceProvider
 {
